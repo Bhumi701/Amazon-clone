@@ -1,0 +1,7 @@
+git = track changes in our code and lets us easily undo our changes
+repository = a folder where changes are being tracked
+git config user.name "Your Name"  # set the name associated with your commits
+git config user.email "ur email"  # set the email associated with your commits
+git init  # initialize a new git repository in the current folder
+git status  # check the status of your repository
+git add filename  # stage a specific file for commit  
