@@ -1,4 +1,5 @@
-git = track changes in our code and lets us easily undo our changes
+git = track changes in our code and lets us easily undo our changes 
+-very useful for bigger projects
 repository = a folder where changes are being tracked
 git config user.name "Your Name"  # set the name associated with your commits
 git config user.email "ur email"  # set the email associated with your commits
