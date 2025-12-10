@@ -6,3 +6,14 @@ git config user.email "ur email"  # set the email associated with your commits
 git init  # initialize a new git repository in the current folder
 git status  # check the status of your repository
 git add filename  # stage a specific file for commit  
+
+MAIN IDEA OF JS:
+1. save the data
+2. generate the HTML
+3. make it interactive
+
+ctrl+f = search
+data = information [info about our products]
+
+accumulator pattern = we loop through an array and eah time we are adding the result
+(product.priceCents / 100).toFixed(2) == toFixed convert a number into string(how many decimals u need)
