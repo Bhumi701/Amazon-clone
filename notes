@@ -17,3 +17,9 @@ data = information [info about our products]
 
 accumulator pattern = we loop through an array and eah time we are adding the result
 (product.priceCents / 100).toFixed(2) == toFixed convert a number into string(how many decimals u need)
+
+add to cart = page = list which has product, quantity
+how do we know which product to add? === DATA ATTRIBUTE
+Data Attribute = is just another HTML attribute
+================ allows us to attach any information to an element
+syntax = is just an html attribute, key:value types, have to start with "data-", then give it any name : data-product-name = "${product.name}"
