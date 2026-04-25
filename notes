@@ -1,0 +1,239 @@
+git = track changes in our code and lets us easily undo our changes 
+-very useful for bigger projects
+repository = a folder where changes are being tracked
+git config user.name "Your Name"  # set the name associated with your commits
+git config user.email "ur email"  # set the email associated with your commits
+git init  # initialize a new git repository in the current folder
+git status  # check the status of your repository
+git add filename  # stage a specific file for commit  
+
+MAIN IDEA OF JS:
+1. save the data
+2. generate the HTML
+3. make it interactive
+
+ctrl+f = search
+data = information [info about our products]
+
+accumulator pattern = we loop through an array and eah time we are adding the result
+(product.priceCents / 100).toFixed(2) == toFixed convert a number into string(how many decimals u need)
+
+add to cart = page = list which has product, quantity
+how do we know which product to add? === DATA ATTRIBUTE
+Data Attribute = is just another HTML attribute
+================ allows us to attach any information to an element
+syntax = is just an html attribute, key:value types, have to start with "data-", then give it any name : data-product-name = "${product.name}"
+
+===============================================
+//MODULES
+===============================================
+
+koi variable, let cart= yh ek hi file mein use ho sakta dusre file mein nhi or yh conflicts koi bhi enhance karta h toh <script src= "data/cart.js"></scripts>
+- it run all the code inside cart.js
+create a cart variable
+cause a naming conflict
+by removing <script> tag , no runnign code inside cart.js, no creating a cart variable, no naming conflict
+
+create a module=
+create a file
+don't load the file with <script>
+any variables we create inside the file, will be contained inside the file
+
+
+<script...> = 'cart' doesnot exist anymore
+    _____________
+    |           |
+    |    cart   |
+    |___________|
+     cart.js
+
+     we can't access cart from the outside
+
+Get a variable out of a file
+add type="module" attribute = let's this file get variables out of other files
+export
+import
+
+put all imports at the top of the file
+we need to use live server
+helps us avoiding naming conflicts
+import { cart as myCart } from '../data/cart.js';
+
+const cart =[];
+order in sripts tags really matters as it takes first cart then amazon.js to load cart first
+=== it is really hard to manage many scripts file for a large project
+
+modules = better way to organize our code
+
+
+============================================
+group relates code together into its own file.
+in amazon.js=
+import * as cartModule from '../data/cart.js';
+
+cartModule.cart
+cartModule.addToCart('id');
+import everything
+
+=|| normalising the data = cart.js mein hum sirf productId or quantity le rhe qki hum productid ko productId from amazon se match karke pura data lelenge product ka so need to save data twice.
+
+
+utils =folder
+.. = outside the folder
+. = current folder
+
+<input type="radio" name="name1">
+same name = we can only select 1 of them
+
+
+variables reset when we refresh the page so we want something which can store our cart data locally == localStorage()... when we refresh the page it didn't reset the page.  ||it stores only string||
+
+
+localStorage.setItem('name of whatever we want to save', 'data what we want to save');
+
+./path = current folder
+../path outside the folder
+
+
+===============================================
+EXTERNAL LIBRARIES
+===============================================
+
+
+=code that is outside of our project
+<script src="https://unpkg.com/supersimpledev@1.0.1/hello.js"></script> in checkout.html
+DayJS external library is popular for the dates (stuff)
+
+Minification is the process of reducing the size of code (like JavaScript, CSS, or HTML) by removing unnecessary characters such as spaces, comments, and line breaks, without changing how the code works. It makes websites load faster and improves performance because smaller files are quicker to transfer over the internet.
+
+
+dayjs lib for dateday time
+--- to get current time, var now = dayjs()
+#add
+const a = dayjs()
+const b = a.add(7,'day')
+
+dayjs().format('what kind of format we want it to be')
+
+
+ESM = EcmaScript Module
+EcmaScript = Javascript
+// ESM Version = a version that works with Javascript Modules
+
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.  ';
+=== default export - another way of exporting 
+- we can use it when we only want to export 1 thing
+
+
+localStorage.removeItem('cart')
+localStorage.clear()
+
+shorthand property = const {productId, deliveryOptionId} = element.dataset;
+const productId = element.dataset.productId;
+const deliveryOptionId = element.dataset.deliveryOptionId;
+
+a function recall it self = recursion
+
+
+1. update the data
+2. regenerate all the html = MVC  || Model - View - Controller
+mvc = split our code into 3 parts 
+1. model = saves and manages the data
+2. view = takes the data and displays it on the page
+3. controller = runs some code when we interact with the page
+
+mvc = makes sure that the page always matchees the data
+
+===============================================
+TESTING
+===============================================
+
+disadvantages of manual testing 
+1. hard to test every situation
+2. hard to re-test
+
+Automated Testing = using code to test code
+
+console.error();
+console.warn();
+
+2 Types of test cases
+1. basic test cases = tests if the code is working
+2. edge cases = test with values that are tricky
+
+
+===============================================
+TESTING FRAMEWORK
+===============================================
+
+= external library that helps us write tests easier
+JASMINE (*___*)
+Jest for ReactJS
+MochaJS
+
+spec=test so specRunner.html = test.html means
+
+test coverage = how much of the code is being tested
+(try to maximize test coverage) 
+use if else
+
+describe('test suite: addToCart', () => {
+  
+  it('adds an existing product to the cart', () => {
+    
+  });
+  it('adds a new product to the cart', () => {
+    addToCart("e43638ce-6aa0-4b85-b27f-e1d07eb678c6");
+    expect(cart.length).toEqual(1);
+///// in this cart should be initializing with 0 quantity to push to 1 quantity however it initialzes with localstorage so it makes the test flaky
+  });
+});
+
+flaky Test = test that sometimes passes and sometimes fails
+
+mocks = lets us replace a method with a fake version
+spyOn(object, 'method we want to ').and.callFake(fucntion which will overrides the getITem function);
+
+spyOn() records every time a method is used
+
+Unit Tests = testing 1 piece of the code
+Integration test = tests many units/pieces of code working together
+
+when testing whole page == 2 things to test:
+1. how to page looks
+2. how the page behaves
+
+hooks = lets us run some code for each test
+beforeEach(() => {
+
+})
+
+1. beforeEach() = runs code before each test
+2. afterEach() = runs code after each test
+3. beforeAll() = runs code before all tests
+4. afterAll() = runs code after all tests
+
+
+
+===============================================
+OOP
+===============================================
+
+Procedural programming 
+procedure = a set of step-by-step instructions 
+          = a function
+
+oop = orgainze our code into objects
+function inside an object = method
+
+cart.cartItems litle bit confusing and what if we have changed the name of this with other name so we use this.cartItem . mark this===
+
+why do we use oop?
+oop = tries to represent the real world
+
+it is easy to create multiple objects
+
+we will using a function to create multiple objects
+
+use pascalCase for things that generate objects
+==== start every word with a capital
